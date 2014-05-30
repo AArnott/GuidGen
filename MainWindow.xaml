@@ -83,12 +83,11 @@
         <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
             <Button Content="_Copy" Command="{Binding CopyCommand}" />
             <Button Content="_New Guid" Command="{Binding NewGuidCommand}" />
-            <Button Content="E_xit" Click="Exit_Click" />
         </StackPanel>
 
         <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,0,0,15">
             Choose the desired format below, then select "Copy" to copy the results to the clipboard
-            (the results can then be pasted into your source code).  Choose "Exit" when done.
+            (the results can then be pasted into your source code).
         </TextBlock>
 
         <GroupBox Header="GUID Format">

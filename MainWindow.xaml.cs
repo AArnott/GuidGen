@@ -37,10 +37,5 @@
             Settings.Default.Save();
             base.OnClosed(e);
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }
