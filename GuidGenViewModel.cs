@@ -99,17 +99,17 @@
                     throw new NotSupportedException();
             }
         }
+    }
 
-        public enum CodeSnippetFormat
-        {
-            ImplementOleCreate,
-            DefineGuid,
-            StaticConstStructGuid,
-            RegistryFormat,
-            GuidAttributeWithBrackets,
-            GuidAttributeWithAngleBrackets,
-            CSharpFieldDefinition,
-            VBFieldFieldDefinition,
-        }
+    public enum CodeSnippetFormat
+    {
+        ImplementOleCreate,
+        DefineGuid,
+        StaticConstStructGuid,
+        RegistryFormat,
+        GuidAttributeWithBrackets,
+        GuidAttributeWithAngleBrackets,
+        CSharpFieldDefinition,
+        VBFieldFieldDefinition,
     }
 }
