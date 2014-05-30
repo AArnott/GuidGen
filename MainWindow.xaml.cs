@@ -36,6 +36,8 @@
                 // This is *so* not worth crashing the app over if it fails wrong.
                 Debug.Fail("Failed to restore previous format preference. " + ex.Message);
             }
+
+            ((ListBoxItem)FormatListBox.SelectedItem).Focus();
         }
 
         public GuidGenViewModel ViewModel { get; set; }
