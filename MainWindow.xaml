@@ -18,7 +18,9 @@
 
     <DockPanel LastChildFill="True" Margin="10" DataContext="{StaticResource ViewModel}">
         <GroupBox  DockPanel.Dock="Bottom" Header="Result">
-            <TextBlock Text="{Binding CodeSnippet}" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding CodeSnippet}"
+                       TextWrapping="Wrap"
+                       FontFamily="Consolas"/>
         </GroupBox>
         <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
             <Button Content="_Copy" Command="{Binding CopyCommand}" />
