@@ -14,6 +14,7 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using GuidGen.Properties;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +24,18 @@
         public MainWindow()
         {
             InitializeComponent();
+
+            this.ViewModel = (GuidGenViewModel)this.Resources["ViewModel"];
+            this.ViewModel.Format = (CodeSnippetFormat)Settings.Default.PreferredFormat;
+        }
+
+        public GuidGenViewModel ViewModel { get; set; }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            Settings.Default.PreferredFormat = (int)this.ViewModel.Format;
+            Settings.Default.Save();
+            base.OnClosed(e);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
