@@ -40,8 +40,8 @@
                     <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}" Content="_2. DEFINE_GUID(...)" />
                     <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}" Content="{}_3. static const struct GUID= { ... }" />
                     <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=3, Mode=TwoWay}" Content="_4. Registry Format (i.e. {xxxxxxx-xxxx ... xxxx })" />
-                    <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=4, Mode=TwoWay}" Content='_5. [Guid("xxxxxxx-xxxx ... xxxx\")]' />
-                    <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=5, Mode=TwoWay}" Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx\")&gt;' />
+                    <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=4, Mode=TwoWay}" Content='_5. [Guid("xxxxxxx-xxxx ... xxxx")]' />
+                    <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=5, Mode=TwoWay}" Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx")&gt;' />
                     <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=6, Mode=TwoWay}" Content='_7. C# field definition' />
                     <RadioButton GroupName="Format" IsChecked="{Binding Format, Converter={StaticResource RadioBoolToIntConverter}, ConverterParameter=7, Mode=TwoWay}" Content='_8. VB.NET field definition' />
                 </StackPanel>
