@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -26,7 +27,15 @@
             InitializeComponent();
 
             this.ViewModel = (GuidGenViewModel)this.Resources["ViewModel"];
-            this.ViewModel.Format = (CodeSnippetFormat)Settings.Default.PreferredFormat;
+            try
+            {
+                this.ViewModel.Format = (CodeSnippetFormat)Settings.Default.PreferredFormat;
+            }
+            catch (Exception ex)
+            {
+                // This is *so* not worth crashing the app over if it fails wrong.
+                Debug.Fail("Failed to restore previous format preference. " + ex.Message);
+            }
         }
 
         public GuidGenViewModel ViewModel { get; set; }
