@@ -99,15 +99,15 @@
                      SelectedValue="{Binding Format}"
                      SelectedValuePath="Tag">
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.ImplementOleCreate}">
-                        <Label Content="_1. IMPLEMENT_OLECREATE(...)" x:Uid="ImplementOleCreate"
+                        <Label Content="_1. IMPLEMENT_OLECREATE(...)"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.DefineGuid}">
-                        <Label Content="_2. DEFINE_GUID(...)" x:Uid="DefineGuid"
+                        <Label Content="_2. DEFINE_GUID(...)"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.StaticConstStructGuid}">
-                        <Label Content="{}_3. static const struct GUID= { ... }" x:Uid="StaticConstStructGuid"
+                        <Label Content="{}_3. static const struct GUID= { ... }"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.RegistryFormat}">
@@ -115,11 +115,11 @@
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.GuidAttributeWithBrackets}">
-                        <Label Content='_5. [Guid("xxxxxxx-xxxx ... xxxx")]' x:Uid="GuidAttributeWithBrackets"
+                        <Label Content='_5. [Guid("xxxxxxx-xxxx ... xxxx")]'
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.GuidAttributeWithAngleBrackets}">
-                        <Label Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx")&gt;' x:Uid="GuidAttributeWithAngleBrackets"
+                        <Label Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx")&gt;'
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.CSharpFieldDefinition}">
