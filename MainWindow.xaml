@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:GuidGen"
         ShowInTaskbar="True"
+        x:Uid="Window"
         Title="Create GUID" Height="400" Width="525">
     <Window.Resources>
         <Style TargetType="Button">
@@ -75,22 +76,22 @@
     </Window.Resources>
 
     <DockPanel LastChildFill="True" Margin="10" DataContext="{StaticResource ViewModel}">
-        <GroupBox  DockPanel.Dock="Bottom" Header="Result">
+        <GroupBox DockPanel.Dock="Bottom" Header="Result" x:Uid="ResultGroupBox">
             <TextBlock Text="{Binding CodeSnippet}"
                        TextWrapping="Wrap"
                        FontFamily="Consolas"/>
         </GroupBox>
         <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
-            <Button Content="_Copy" Command="{Binding CopyCommand}" />
-            <Button Content="_New Guid" Command="{Binding NewGuidCommand}" />
+            <Button x:Uid="CopyButton" Content="_Copy" Command="{Binding CopyCommand}" />
+            <Button x:Uid="NewGuidButton" Content="_New Guid" Command="{Binding NewGuidCommand}" />
         </StackPanel>
 
-        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,0,0,15">
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,0,0,15" x:Uid="Instructions">
             Choose the desired format below, then select "Copy" to copy the results to the clipboard
             (the results can then be pasted into your source code).
         </TextBlock>
 
-        <GroupBox Header="GUID Format">
+        <GroupBox Header="GUID Format" x:Uid="GuidFormatGroupBox">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListBox Style="{StaticResource RadioButtonList}"
                      ItemContainerStyle="{StaticResource SpacedRadioButtonListItem}"
@@ -98,35 +99,35 @@
                      SelectedValue="{Binding Format}"
                      SelectedValuePath="Tag">
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.ImplementOleCreate}">
-                        <Label Content="_1. IMPLEMENT_OLECREATE(...)"
+                        <Label Content="_1. IMPLEMENT_OLECREATE(...)" x:Uid="ImplementOleCreate"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.DefineGuid}">
-                        <Label Content="_2. DEFINE_GUID(...)"
+                        <Label Content="_2. DEFINE_GUID(...)" x:Uid="DefineGuid"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.StaticConstStructGuid}">
-                        <Label Content="{}_3. static const struct GUID= { ... }"
+                        <Label Content="{}_3. static const struct GUID= { ... }" x:Uid="StaticConstStructGuid"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.RegistryFormat}">
-                        <Label Content="_4. Registry Format (i.e. {xxxxxxx-xxxx ... xxxx })"
+                        <Label Content="_4. Registry Format (i.e. {xxxxxxx-xxxx ... xxxx })" x:Uid="RegistryFormat"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.GuidAttributeWithBrackets}">
-                        <Label Content='_5. [Guid("xxxxxxx-xxxx ... xxxx")]'
+                        <Label Content='_5. [Guid("xxxxxxx-xxxx ... xxxx")]' x:Uid="GuidAttributeWithBrackets"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.GuidAttributeWithAngleBrackets}">
-                        <Label Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx")&gt;'
+                        <Label Content='_6. &lt;Guid("xxxxxxx-xxxx ... xxxx")&gt;' x:Uid="GuidAttributeWithAngleBrackets"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.CSharpFieldDefinition}">
-                        <Label Content='_7. C# field definition'
+                        <Label Content='_7. C# field definition' x:Uid="CSharpFieldDefinition"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.VBFieldFieldDefinition}">
-                        <Label Content='_8. VB.NET field definition'
+                        <Label Content='_8. VB.NET field definition' x:Uid="VBFieldFieldDefinition"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                 </ListBox>
