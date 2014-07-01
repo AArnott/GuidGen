@@ -79,7 +79,8 @@
         <GroupBox DockPanel.Dock="Bottom" Header="Result" x:Uid="ResultGroupBox">
             <TextBlock Text="{Binding CodeSnippet}"
                        TextWrapping="Wrap"
-                       FontFamily="Consolas"/>
+                       FontFamily="Consolas"
+                       Name="CodeSnippetText"/>
         </GroupBox>
         <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
             <Button x:Uid="CopyButton" Content="_Copy" Command="{Binding CopyCommand}" />
