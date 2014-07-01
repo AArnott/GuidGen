@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using GuidGen;
     using Xunit;
 
@@ -19,7 +20,7 @@
         }
 
         [Fact]
-        public void NewGuidChangesGuid()
+        public void NewGuid_ChangesGuid()
         {
             Guid originalGuid = this.viewModel.Value;
             this.viewModel.NewGuid();
@@ -28,19 +29,41 @@
         }
 
         [Fact]
-        public void NewGuidCommandCanExecute()
+        public void NewGuidCommand_CanExecute()
         {
             Guid originalGuid = this.viewModel.Value;
             Assert.True(this.viewModel.NewGuidCommand.CanExecute(null));
         }
 
         [Fact]
-        public void NewGuidCommandChangesGuid()
+        public void NewGuidCommand_ChangesGuid()
         {
             Guid originalGuid = this.viewModel.Value;
             this.viewModel.NewGuidCommand.Execute(null);
             Assert.NotEqual(originalGuid, this.viewModel.Value);
             Assert.NotEqual(Guid.Empty, this.viewModel.Value);
+        }
+
+        [Fact]
+        public void CopyCommand_CopiesGuid()
+        {
+            Clipboard.Clear();
+            this.viewModel.CopyCommand.Execute(null);
+            string copiedText = Clipboard.GetText();
+            Assert.Equal(this.viewModel.CodeSnippet, copiedText);
+        }
+
+        [Fact]
+        public void Format_ChangesCodeSnippet()
+        {
+            var codeSnippets = new HashSet<string>();
+            foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
+            {
+                this.viewModel.Format = format;
+
+                // Make sure that the resulting snippet is unique.
+                Assert.True(codeSnippets.Add(this.viewModel.CodeSnippet));
+            }
         }
     }
 }
