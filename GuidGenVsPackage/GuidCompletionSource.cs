@@ -9,6 +9,7 @@
     using Microsoft.VisualStudio.Text;
     using Microsoft.VisualStudio.Text.Operations;
     using Microsoft.VisualStudio.Utilities;
+    using GuidGen;
 
     internal class GuidCompletionSource : ICompletionSource
     {
@@ -26,8 +27,9 @@
             Guid guid = Guid.NewGuid();
 
             var compList = new List<Completion>();
-            compList.Add(new Completion("Guid", guid.ToString("B"), "A GUID formatted in the human-readable (registry) format.", null, null));
-            compList.Add(new Completion("GuidF", "static readonly Guid SomeGuid = new Guid(\"" + guid.ToString() + "\");", "A C# definition of a field containing a GUID.", null, null));
+            compList.Add(new Completion("GuidA", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.GuidAttributeWithBrackets), "A GUID formatted as a C# GuidAttribute.", null, null));
+            compList.Add(new Completion("GuidB", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.RegistryFormat), "A GUID formatted in the human-readable (registry) format.", null, null));
+            compList.Add(new Completion("GuidF", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.CSharpFieldDefinition), "A C# definition of a field containing a GUID.", null, null));
 
             completionSets.Add(new CompletionSet(
                 "Guids",    //the non-localized title of the tab 
