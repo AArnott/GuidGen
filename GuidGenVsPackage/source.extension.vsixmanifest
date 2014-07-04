@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="f4938f46-b76f-4b6f-91a7-05978aab4426" Version="0.1" Language="en-US" Publisher="Andrew Arnott" />
+    <Identity Id="f4938f46-b76f-4b6f-91a7-05978aab4426" Version="0.2" Language="en-US" Publisher="Andrew Arnott" />
     <DisplayName>GuidGen 2.0</DisplayName>
-    <Description xml:space="preserve">Provides a new Create GUID command in the Tools menu with a new WPF surface, and featuring code tailored for C# and VB.NET developers to define Guid fields.</Description>
+    <Description xml:space="preserve">Provides a new Create GUID command in the Tools menu with a new WPF surface, and featuring code tailored for C# and VB.NET developers to define Guid fields.
+Also provides editor inline code completions for adding GUIDs, guid fields and guid attributes for C# and VB.NET!</Description>
     <Icon>AppIcon.ico</Icon>
     <Tags>guid</Tags>
   </Metadata>
