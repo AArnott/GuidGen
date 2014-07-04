@@ -142,8 +142,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GuidCompletionCommandHandler.cs" />
-    <Compile Include="GuidCompletionHandlerProvider.cs" />
     <Compile Include="GuidCompletionSource.cs" />
     <Compile Include="GuidCompletionSourceProvider.cs" />
     <Compile Include="Guids.cs" />
