@@ -14,7 +14,6 @@
     {
         private GuidCompletionSourceProvider m_sourceProvider;
         private ITextBuffer m_textBuffer;
-        private List<Completion> m_compList;
 
         public GuidCompletionSource(GuidCompletionSourceProvider sourceProvider, ITextBuffer textBuffer)
         {
@@ -24,22 +23,17 @@
 
         public void AugmentCompletionSession(ICompletionSession session, IList<CompletionSet> completionSets)
         {
-            List<string> strList = new List<string>();
-            strList.Add("addition");
-            strList.Add("adaptation");
-            strList.Add("subtraction");
-            strList.Add("summation");
-            m_compList = new List<Completion>();
-            foreach (string str in strList)
-            {
-                m_compList.Add(new Completion(str, str, str, null, null));
-            }
+            Guid guid = Guid.NewGuid();
+
+            var compList = new List<Completion>();
+            compList.Add(new Completion("Guid", guid.ToString("B"), "A GUID formatted in the human-readable (registry) format.", null, null));
+            compList.Add(new Completion("GuidF", "static readonly Guid SomeGuid = new Guid(\"" + guid.ToString() + "\");", "A C# definition of a field containing a GUID.", null, null));
 
             completionSets.Add(new CompletionSet(
                 "Guids",    //the non-localized title of the tab 
                 "Guids",    //the display title of the tab
                 FindTokenSpanAtPosition(session.GetTriggerPoint(m_textBuffer), session),
-                m_compList,
+                compList,
                 null));
         }
 

@@ -14,8 +14,8 @@
     using Microsoft.VisualStudio.Utilities;
 
     [Export(typeof(IVsTextViewCreationListener))]
-    [Name("token completion handler")]
-    [ContentType("plaintext")]
+    [ContentType("csharp")]
+    [Name("guid completion handler")]
     [TextViewRole(PredefinedTextViewRoles.Editable)]
     internal class GuidCompletionHandlerProvider : IVsTextViewCreationListener
     {

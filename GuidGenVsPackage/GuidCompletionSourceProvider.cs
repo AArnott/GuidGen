@@ -11,8 +11,8 @@
     using Microsoft.VisualStudio.Utilities;
 
     [Export(typeof(ICompletionSourceProvider))]
-    [ContentType("plaintext")]
-    [Name("token completion")]
+    [ContentType("csharp")]
+    [Name("guid completion")]
     internal class GuidCompletionSourceProvider : ICompletionSourceProvider
     {
         [Import]
