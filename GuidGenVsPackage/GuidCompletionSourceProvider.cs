@@ -11,8 +11,9 @@
     using Microsoft.VisualStudio.Utilities;
 
     [Export(typeof(ICompletionSourceProvider))]
-    [ContentType("csharp")]
-    [Name("guid completion")]
+    [ContentType("Basic")]
+    [ContentType("CSharp")]
+    [Name("Guid completion")]
     internal class GuidCompletionSourceProvider : ICompletionSourceProvider
     {
         [Import]
@@ -20,7 +21,7 @@
 
         public ICompletionSource TryCreateCompletionSource(VisualStudio.Text.ITextBuffer textBuffer)
         {
-            return new GuidCompletionSource(this, textBuffer);
+            return new GuidCompletionSource(this.NavigatorService, textBuffer, vb: textBuffer.ContentType.IsOfType("Basic"));
         }
     }
 }

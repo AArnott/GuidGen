@@ -13,13 +13,15 @@
 
     internal class GuidCompletionSource : ICompletionSource
     {
-        private GuidCompletionSourceProvider m_sourceProvider;
-        private ITextBuffer m_textBuffer;
+        private readonly ITextStructureNavigatorSelectorService navigatorService;
+        private readonly ITextBuffer m_textBuffer;
+        private readonly bool vb;
 
-        public GuidCompletionSource(GuidCompletionSourceProvider sourceProvider, ITextBuffer textBuffer)
+        public GuidCompletionSource(ITextStructureNavigatorSelectorService navigatorService, ITextBuffer textBuffer, bool vb)
         {
-            m_sourceProvider = sourceProvider;
-            m_textBuffer = textBuffer;
+            this.navigatorService = navigatorService;
+            this.m_textBuffer = textBuffer;
+            this.vb = vb;
         }
 
         public void AugmentCompletionSession(ICompletionSession session, IList<CompletionSet> completionSets)
@@ -27,9 +29,18 @@
             Guid guid = Guid.NewGuid();
 
             var compList = new List<Completion>();
-            compList.Add(new Completion("GuidA", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.GuidAttributeWithBrackets), "A GUID formatted as a C# GuidAttribute.", null, null));
-            compList.Add(new Completion("GuidB", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.RegistryFormat), "A GUID formatted in the human-readable (registry) format.", null, null));
-            compList.Add(new Completion("GuidF", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.CSharpFieldDefinition), "A C# definition of a field containing a GUID.", null, null));
+            if (this.vb)
+            {
+                compList.Add(new Completion("GuidA", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.GuidAttributeWithAngleBrackets), "A GUID formatted as a VB GuidAttribute.", null, null));
+                compList.Add(new Completion("GuidB", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.RegistryFormat), "A GUID formatted in the human-readable (registry) format.", null, null));
+                compList.Add(new Completion("GuidF", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.VBFieldFieldDefinition), "A VB definition of a field containing a GUID.", null, null));
+            }
+            else
+            {
+                compList.Add(new Completion("GuidA", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.GuidAttributeWithBrackets), "A GUID formatted as a C# GuidAttribute.", null, null));
+                compList.Add(new Completion("GuidB", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.RegistryFormat), "A GUID formatted in the human-readable (registry) format.", null, null));
+                compList.Add(new Completion("GuidF", GuidCodeSnippetFormatter.GetCodeSnippet(guid, CodeSnippetFormat.CSharpFieldDefinition), "A C# definition of a field containing a GUID.", null, null));
+            }
 
             completionSets.Add(new CompletionSet(
                 "Guids",    //the non-localized title of the tab 
@@ -46,7 +57,7 @@
         private ITrackingSpan FindTokenSpanAtPosition(ITrackingPoint point, ICompletionSession session)
         {
             SnapshotPoint currentPoint = (session.TextView.Caret.Position.BufferPosition) - 1;
-            ITextStructureNavigator navigator = m_sourceProvider.NavigatorService.GetTextStructureNavigator(m_textBuffer);
+            ITextStructureNavigator navigator = this.navigatorService.GetTextStructureNavigator(m_textBuffer);
             TextExtent extent = navigator.GetExtentOfWord(currentPoint);
             return currentPoint.Snapshot.CreateTrackingSpan(extent.Span, SpanTrackingMode.EdgeInclusive);
         }
