@@ -62,10 +62,10 @@
           If you do not want an image next to your command, remove the Icon node /> -->
 
       <Button guid="guidGuidGenVsPackageCmdSet" id="cmdidCreateGuid" priority="0x0100" type="Button">
-        <Parent guid="guidGuidGenVsPackageCmdSet" id="MyMenuGroup" />
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_EXT_TOOLS" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Create Guid 2</ButtonText>
+          <ButtonText>Create &amp;GUID (new)</ButtonText>
         </Strings>
       </Button>
 
