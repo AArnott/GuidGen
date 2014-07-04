@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidGen", "GuidGen\GuidGen.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidGenTests", "GuidGenTests\GuidGenTests.csproj", "{14AC86EA-74E5-4992-862D-1F11D4807F9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidGenVsPackage", "GuidGenVsPackage\GuidGenVsPackage.csproj", "{92BE87CE-00CD-4EFD-B48A-36A7898A0430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
