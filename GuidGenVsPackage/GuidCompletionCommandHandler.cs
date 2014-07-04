@@ -111,14 +111,23 @@
                 return false;
             }
 
-            m_session = m_provider.CompletionBroker.CreateCompletionSession(
-                m_textView,
-                caretPoint.Value.Snapshot.CreateTrackingPoint(caretPoint.Value.Position, PointTrackingMode.Positive),
-                true);
+            m_session = m_provider.CompletionBroker.GetSessions(m_textView).FirstOrDefault();
+
+            if (m_session == null)
+            {
+                m_session = m_provider.CompletionBroker.CreateCompletionSession(
+                    m_textView,
+                    caretPoint.Value.Snapshot.CreateTrackingPoint(caretPoint.Value.Position, PointTrackingMode.Positive),
+                    true);
+            }
 
             //subscribe to the Dismissed event on the session 
             m_session.Dismissed += this.OnSessionDismissed;
-            m_session.Start();
+
+            if (!m_session.IsStarted)
+            {
+                m_session.Start();
+            }
 
             return true;
         }
