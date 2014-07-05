@@ -10,10 +10,12 @@
     using Microsoft.VisualStudio.Text.Operations;
     using Microsoft.VisualStudio.Utilities;
 
-    [Export(typeof(ICompletionSourceProvider))]
-    [ContentType("Basic")]
-    [ContentType("CSharp")]
-    [Name("Guid completion")]
+    // Disabled for now since it causes a lot of trouble sometimes.
+    // It breaks Roslyn in Dev14 in C# sometimes, and it's busted in VB.
+    ////[Export(typeof(ICompletionSourceProvider))]
+    ////[ContentType("Basic")]
+    ////[ContentType("CSharp")]
+    ////[Name("Guid completion")]
     internal class GuidCompletionSourceProvider : ICompletionSourceProvider
     {
         [Import]
