@@ -12,27 +12,21 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release (with VSPackage)|Any CPU = Release (with VSPackage)|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B69DC871-460C-400D-A709-21535C0C7565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B69DC871-460C-400D-A709-21535C0C7565}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B69DC871-460C-400D-A709-21535C0C7565}.Release (with VSPackage)|Any CPU.ActiveCfg = Release|Any CPU
-		{B69DC871-460C-400D-A709-21535C0C7565}.Release (with VSPackage)|Any CPU.Build.0 = Release|Any CPU
 		{B69DC871-460C-400D-A709-21535C0C7565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B69DC871-460C-400D-A709-21535C0C7565}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release (with VSPackage)|Any CPU.ActiveCfg = Release|Any CPU
-		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release (with VSPackage)|Any CPU.Build.0 = Release|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14AC86EA-74E5-4992-862D-1F11D4807F9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release (with VSPackage)|Any CPU.ActiveCfg = Release|Any CPU
-		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release (with VSPackage)|Any CPU.Build.0 = Release|Any CPU
 		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92BE87CE-00CD-4EFD-B48A-36A7898A0430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
