@@ -12,54 +12,33 @@
     using Xunit;
 
     [Trait("UI", "")]
-    public class UITests
+    public class UITests : IDisposable
     {
-        private const bool visibleUITests = false;
+        private MainWindow window;
 
-        [Fact]
-        public void UIRespondsToViewModelChanges()
+        public UITests()
         {
-            this.UITest(window =>
-            {
-                var listBox = (ListBox)window.FindName("FormatListBox");
-                var codeSnippetText = (TextBlock)window.FindName("CodeSnippetText");
-
-                foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
-                {
-                    window.ViewModel.Format = format;
-                    var listBoxSelectedFormat = (CodeSnippetFormat)listBox.SelectedValue;
-                    Assert.Equal(format, listBoxSelectedFormat);
-                    Assert.Equal(window.ViewModel.CodeSnippet, codeSnippetText.Text);
-                }
-
-                return Task.FromResult<object>(null);
-            });
+            this.window = new MainWindow();
         }
 
-        private void UITest(Func<MainWindow, Task> testMethod, bool visible = visibleUITests)
+        public void Dispose()
         {
-            SynchronizationContext.SetSynchronizationContext(new DispatcherSynchronizationContext());
-            var window = new MainWindow();
+            this.window.Close();
+        }
 
-            var frame = new DispatcherFrame();
-            SynchronizationContext.Current.Post(async d =>
+        [STAFact]
+        public void UIRespondsToViewModelChanges()
+        {
+            var listBox = (ListBox)window.FindName("FormatListBox");
+            var codeSnippetText = (TextBlock)window.FindName("CodeSnippetText");
+
+            foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
             {
-                try
-                {
-                    if (visible)
-                    {
-                        window.Show();
-                    }
-
-                    await testMethod(window);
-                }
-                finally
-                {
-                    window.Close();
-                    frame.Continue = false;
-                }
-            }, null);
-            Dispatcher.PushFrame(frame);
+                window.ViewModel.Format = format;
+                var listBoxSelectedFormat = (CodeSnippetFormat)listBox.SelectedValue;
+                Assert.Equal(format, listBoxSelectedFormat);
+                Assert.Equal(window.ViewModel.CodeSnippet, codeSnippetText.Text);
+            }
         }
     }
 }
