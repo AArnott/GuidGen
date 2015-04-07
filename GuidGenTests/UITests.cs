@@ -16,7 +16,7 @@
     {
         private const bool visibleUITests = false;
 
-        [Fact]
+        [STAFact]
         public void UIRespondsToViewModelChanges()
         {
             this.UITest(window =>
