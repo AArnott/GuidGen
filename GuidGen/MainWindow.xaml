@@ -108,7 +108,7 @@
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.StaticConstStructGuid}">
-                        <Label Content="{}_3. static const struct GUID= { ... }"
+                        <Label Content="{}_3. static const struct GUID = { ... }"
                            Target="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
                     </ListBoxItem>
                     <ListBoxItem Tag="{x:Static local:CodeSnippetFormat.RegistryFormat}">
