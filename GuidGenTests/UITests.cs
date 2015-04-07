@@ -12,54 +12,42 @@
     using Xunit;
 
     [Trait("UI", "")]
-    public class UITests
+    public class UITests : IDisposable
     {
         private const bool visibleUITests = false;
+
+        private MainWindow window;
+
+        public UITests()
+        {
+            this.window = new MainWindow();
+
+#pragma warning disable CS0162 // we're conditioning on a constant
+            if (visibleUITests)
+            {
+                window.Show();
+            }
+#pragma warning restore
+        }
+
+        public void Dispose()
+        {
+            this.window.Close();
+        }
 
         [STAFact]
         public void UIRespondsToViewModelChanges()
         {
-            this.UITest(window =>
+            var listBox = (ListBox)window.FindName("FormatListBox");
+            var codeSnippetText = (TextBlock)window.FindName("CodeSnippetText");
+
+            foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
             {
-                var listBox = (ListBox)window.FindName("FormatListBox");
-                var codeSnippetText = (TextBlock)window.FindName("CodeSnippetText");
-
-                foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
-                {
-                    window.ViewModel.Format = format;
-                    var listBoxSelectedFormat = (CodeSnippetFormat)listBox.SelectedValue;
-                    Assert.Equal(format, listBoxSelectedFormat);
-                    Assert.Equal(window.ViewModel.CodeSnippet, codeSnippetText.Text);
-                }
-
-                return Task.FromResult<object>(null);
-            });
-        }
-
-        private void UITest(Func<MainWindow, Task> testMethod, bool visible = visibleUITests)
-        {
-            SynchronizationContext.SetSynchronizationContext(new DispatcherSynchronizationContext());
-            var window = new MainWindow();
-
-            var frame = new DispatcherFrame();
-            SynchronizationContext.Current.Post(async d =>
-            {
-                try
-                {
-                    if (visible)
-                    {
-                        window.Show();
-                    }
-
-                    await testMethod(window);
-                }
-                finally
-                {
-                    window.Close();
-                    frame.Continue = false;
-                }
-            }, null);
-            Dispatcher.PushFrame(frame);
+                window.ViewModel.Format = format;
+                var listBoxSelectedFormat = (CodeSnippetFormat)listBox.SelectedValue;
+                Assert.Equal(format, listBoxSelectedFormat);
+                Assert.Equal(window.ViewModel.CodeSnippet, codeSnippetText.Text);
+            }
         }
     }
 }
