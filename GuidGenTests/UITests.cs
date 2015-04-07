@@ -14,20 +14,11 @@
     [Trait("UI", "")]
     public class UITests : IDisposable
     {
-        private const bool visibleUITests = false;
-
         private MainWindow window;
 
         public UITests()
         {
             this.window = new MainWindow();
-
-#pragma warning disable CS0162 // we're conditioning on a constant
-            if (visibleUITests)
-            {
-                window.Show();
-            }
-#pragma warning restore
         }
 
         public void Dispose()
