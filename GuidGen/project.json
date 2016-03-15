@@ -1,0 +1,11 @@
+﻿{
+  "frameworks": {
+    "net46": { }
+  },
+  "dependencies": {
+    "Validation": "2.2.4"
+  },
+  "runtimes": {
+    "win": { }
+  }
+}
