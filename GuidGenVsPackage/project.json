@@ -1,6 +1,6 @@
 ﻿{
   "frameworks": {
-    "net45": { }
+    "net46": { }
   },
   "dependencies": {
     "Microsoft.VisualStudio.Language.Intellisense": "14.0.23205",
