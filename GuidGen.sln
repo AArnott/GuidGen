@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25114.0
+VisualStudioVersion = 14.0.25414.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidGen", "GuidGen\GuidGen.csproj", "{B69DC871-460C-400D-A709-21535C0C7565}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AF1DAAA-F64D-4990-AE19-ED93F98C1CB4}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		nuget.config = nuget.config
+		version.json = version.json
 	EndProjectSection
 EndProject
 Global
