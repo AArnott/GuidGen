@@ -3,11 +3,12 @@
     "net46": { }
   },
   "dependencies": {
-    "Validation": "2.2.4",
     "Nerdbank.GitVersioning": {
       "version": "1.5.17-rc-g784af64a3a",
       "suppressParent": "none"
-    }
+    },
+    "ReadOnlySourceTree": "0.1.37-beta",
+    "Validation": "2.2.4"
   },
   "runtimes": {
     "win": { }
