@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using System.Runtime.Serialization;
-    using Validation;
+    using Microsoft;
 
     /// <summary>
     /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.

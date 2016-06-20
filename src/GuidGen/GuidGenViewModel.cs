@@ -9,7 +9,7 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
-    using Validation;
+    using Microsoft;
 
     public class GuidGenViewModel : BindableBase
     {
