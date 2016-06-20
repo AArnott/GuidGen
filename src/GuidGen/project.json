@@ -3,6 +3,14 @@
     "net46": { }
   },
   "dependencies": {
+    "MicroBuild.Core": {
+      "version": "0.2.0",
+      "suppressParent": "none"
+    },
+    "MicroBuild.VisualStudio": {
+      "version": "1.0.122-rc",
+      "suppressParent": "none"
+    },
     "Nerdbank.GitVersioning": {
       "version": "1.5.17-rc-g784af64a3a",
       "suppressParent": "none"
