@@ -4,7 +4,8 @@
         xmlns:local="clr-namespace:GuidGen"
         ShowInTaskbar="True"
         x:Uid="Window"
-        Title="Create GUID" Height="400" Width="525" WindowStartupLocation="CenterScreen">
+        Title="Create GUID" WindowStartupLocation="CenterScreen"
+        Height="400" Width="525" MinHeight="300" MinWidth="400">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Padding" Value="15,5,15,5" />
