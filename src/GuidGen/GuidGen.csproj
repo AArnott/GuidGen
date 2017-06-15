@@ -104,7 +104,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="project.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,10 +117,9 @@
     <Resource Include="AppIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MicroBuild.Core" Version="0.2.0" />
-    <PackageReference Include="MicroBuild.VisualStudio" Version="2.0.40" />
+    <PackageReference Include="MicroBuild.VisualStudio" Version="2.0.40" PrivateAssets="none" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="1.6.35" PrivateAssets="none" />
-    <PackageReference Include="ReadOnlySourceTree" Version="0.1.37-beta" />
+    <PackageReference Include="ReadOnlySourceTree" Version="0.1.37-beta" PrivateAssets="none" />
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="14.0.50702" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

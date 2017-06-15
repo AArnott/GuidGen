@@ -50,6 +50,7 @@
     <PackageReference Include="xunit" Version="2.1.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.1.0" />
     <PackageReference Include="xunit.runner.console" Version="2.1.0" />
+    <PackageReference Include="OpenCover" Version="4.6.519" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidGenViewModelTests.cs" />
@@ -61,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuidGen\GuidGen.csproj">
