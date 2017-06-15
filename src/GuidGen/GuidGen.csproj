@@ -44,7 +44,7 @@
          MicroBuild.VisualStudio package, because of WPF's temporary project that doesn't get
          the imports right. -->
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(UserProfile)\.nuget\packages\MicroBuild.VisualStudio\1.0.122-rc\build\FinalPublicKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>$(UserProfile)\.nuget\packages\MicroBuild.VisualStudio\2.0.40\build\FinalPublicKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
@@ -117,12 +117,12 @@
   <ItemGroup>
     <Resource Include="AppIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MicroBuild.Core" Version="0.2.0" />
+    <PackageReference Include="MicroBuild.VisualStudio" Version="2.0.40" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="1.6.35" PrivateAssets="none" />
+    <PackageReference Include="ReadOnlySourceTree" Version="0.1.37-beta" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="14.0.50702" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
