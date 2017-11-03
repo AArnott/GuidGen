@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="f4938f46-b76f-4b6f-91a7-05978aab4426" Version="|GuidGenVsPackage;GetBuildVersion|" Language="en-US" Publisher="Andrew Arnott" />
-    <DisplayName>GuidGen 2.0</DisplayName>
-    <Description xml:space="preserve">Provides a new Create GUID command in the Tools menu with a new WPF surface, and featuring code tailored for C# and VB.NET developers to define Guid fields.
+    <Metadata>
+        <Identity Id="f4938f46-b76f-4b6f-91a7-05978aab4426" Version="|GuidGenVsPackage;GetBuildVersion|" Language="en-US" Publisher="Andrew Arnott" />
+        <DisplayName>GuidGen 2.0</DisplayName>
+        <Description xml:space="preserve">Provides a new Create GUID command in the Tools menu with a new WPF surface, and featuring code tailored for C# and VB.NET developers to define Guid fields.
 Also provides editor inline code completions for adding GUIDs, guid fields and guid attributes for C# and VB.NET!</Description>
-    <Icon>AppIcon.ico</Icon>
-    <Tags>guid</Tags>
-  </Metadata>
-  <Installation InstalledByMsi="false">
-    <InstallationTarget Version="[12.0,15.0)" Id="Microsoft.VisualStudio.Pro" />
-  </Installation>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-    <Dependency Id="Microsoft.VisualStudio.MPF.12.0" DisplayName="Visual Studio MPF 12.0" d:Source="Installed" Version="[12.0]" />
-  </Dependencies>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-  </Assets>
-  <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.25819.3,16.0)" DisplayName="Visual Studio core editor" />
-  </Prerequisites>
+        <Icon>AppIcon.ico</Icon>
+        <Tags>guid</Tags>
+    </Metadata>
+    <Installation InstalledByMsi="false">
+        <InstallationTarget Version="[12.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.12.0" DisplayName="Visual Studio MPF 12.0" d:Source="Installed" Version="[12.0]" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.25819.3,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
 </PackageManifest>
