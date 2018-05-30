@@ -1,5 +1,16 @@
 version: '{build}'
+branches:
+  only:
+  - master
+  - /^v\d+(?:\.\d+)?$/
+  - /[\b_]validate\b/
 skip_tags: true
+skip_commits:
+  files:
+    - doc/*
+    - .github/*
+    - '**/*.md'
+    - .vsts-ci.yml
 nuget:
   disable_publish_on_pr: true
 image: Visual Studio 2017
@@ -7,6 +18,7 @@ configuration: Release
 environment:
   VisualStudioVersion: 15.0
   TreatWarningsAsErrors: true
+  CodeAnalysisTreatWarningsAsErrors: true
 before_build:
   msbuild src\GuidGen.sln /nologo /m /v:quiet /t:restore
 build:
