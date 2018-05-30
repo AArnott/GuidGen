@@ -19,6 +19,7 @@ environment:
   VisualStudioVersion: 15.0
   TreatWarningsAsErrors: true
   CodeAnalysisTreatWarningsAsErrors: true
+  codecov_token: 301ee93e-5292-4eff-9687-1d04026e52f5
 before_build:
   msbuild src\GuidGen.sln /nologo /m /v:quiet /t:restore
 build:
