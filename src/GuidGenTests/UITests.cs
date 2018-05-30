@@ -26,7 +26,7 @@
             this.window.Close();
         }
 
-        [STAFact]
+        [StaFact]
         public void UIRespondsToViewModelChanges()
         {
             var listBox = (ListBox)window.FindName("FormatListBox");

@@ -44,7 +44,7 @@
             Assert.NotEqual(Guid.Empty, this.viewModel.Value);
         }
 
-        [STAFact]
+        [StaFact]
         public void CopyCommand_CopiesGuid()
         {
             Clipboard.Clear();
