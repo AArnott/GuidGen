@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "GuidGenVsPackage": {
+      "commandName": "Executable",
+      "executablePath": "$(DevEnvDir)devenv.exe",
+      "commandLineArgs": "/rootsuffix exp"
+    }
+  }
+}
