@@ -1,15 +1,17 @@
-﻿namespace Microsoft.GuidGenVsPackage
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace Microsoft.GuidGenVsPackage
 {
     using System;
+    using System.ComponentModel.Design;
     using System.Diagnostics;
     using System.Globalization;
     using System.Runtime.InteropServices;
-    using System.ComponentModel.Design;
-    using Microsoft.Win32;
     using Microsoft.VisualStudio;
-    using Microsoft.VisualStudio.Shell.Interop;
     using Microsoft.VisualStudio.OLE.Interop;
     using Microsoft.VisualStudio.Shell;
+    using Microsoft.VisualStudio.Shell.Interop;
+    using Microsoft.Win32;
 
     /// <summary>
     /// Exposes the GuidGen window as a command in VS.
@@ -37,12 +39,11 @@
             base.Initialize();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
-            OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (mcs != null)
+            if (this.GetService(typeof(IMenuCommandService)) is OleMenuCommandService mcs)
             {
                 // Create the command for the menu item.
                 CommandID menuCommandID = new CommandID(GuidList.guidGuidGenVsPackageCmdSet, (int)PkgCmdIDList.cmdidCreateGuid);
-                MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
+                MenuCommand menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
                 mcs.AddCommand(menuItem);
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;

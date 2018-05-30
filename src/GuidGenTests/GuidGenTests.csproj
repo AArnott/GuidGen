@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
@@ -24,5 +25,11 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(UserProfile)\.nuget\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.x86.exe</StartProgram>
     <StartArguments>"$(TargetPath)" -html "$(TargetDir)TestResults.html"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>GuidGenTests.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>GuidGenTests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>

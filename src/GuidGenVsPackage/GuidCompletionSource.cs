@@ -1,26 +1,28 @@
-﻿namespace Microsoft.GuidGenVsPackage
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace Microsoft.GuidGenVsPackage
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.Composition;
     using System.Linq;
     using System.Text;
-    using System.ComponentModel.Composition;
+    using GuidGen;
     using Microsoft.VisualStudio.Language.Intellisense;
     using Microsoft.VisualStudio.Text;
     using Microsoft.VisualStudio.Text.Operations;
     using Microsoft.VisualStudio.Utilities;
-    using GuidGen;
 
     internal class GuidCompletionSource : ICompletionSource
     {
         private readonly ITextStructureNavigatorSelectorService navigatorService;
-        private readonly ITextBuffer m_textBuffer;
+        private readonly ITextBuffer textBuffer;
         private readonly bool vb;
 
         public GuidCompletionSource(ITextStructureNavigatorSelectorService navigatorService, ITextBuffer textBuffer, bool vb)
         {
             this.navigatorService = navigatorService;
-            this.m_textBuffer = textBuffer;
+            this.textBuffer = textBuffer;
             this.vb = vb;
         }
 
@@ -43,9 +45,9 @@
             }
 
             completionSets.Add(new CompletionSet(
-                "Guids",    //the non-localized title of the tab 
-                "Guids",    //the display title of the tab
-                FindTokenSpanAtPosition(session.GetTriggerPoint(m_textBuffer), session),
+                "Guids",    // the non-localized title of the tab
+                "Guids",    // the display title of the tab
+                this.FindTokenSpanAtPosition(session.GetTriggerPoint(this.textBuffer), session),
                 compList,
                 null));
         }
@@ -56,8 +58,8 @@
 
         private ITrackingSpan FindTokenSpanAtPosition(ITrackingPoint point, ICompletionSession session)
         {
-            SnapshotPoint currentPoint = (session.TextView.Caret.Position.BufferPosition) - 1;
-            ITextStructureNavigator navigator = this.navigatorService.GetTextStructureNavigator(m_textBuffer);
+            SnapshotPoint currentPoint = session.TextView.Caret.Position.BufferPosition - 1;
+            ITextStructureNavigator navigator = this.navigatorService.GetTextStructureNavigator(this.textBuffer);
             TextExtent extent = navigator.GetExtentOfWord(currentPoint);
             return currentPoint.Snapshot.CreateTrackingSpan(extent.Span, SpanTrackingMode.EdgeInclusive);
         }

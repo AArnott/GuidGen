@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +26,7 @@
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.ViewModel = (GuidGenViewModel)this.Resources["ViewModel"];
             try
@@ -37,7 +39,7 @@
                 Debug.Fail("Failed to restore previous format preference. " + ex.Message);
             }
 
-            ((ListBoxItem)FormatListBox.SelectedItem).Focus();
+            ((ListBoxItem)this.FormatListBox.SelectedItem).Focus();
         }
 
         public GuidGenViewModel ViewModel { get; set; }

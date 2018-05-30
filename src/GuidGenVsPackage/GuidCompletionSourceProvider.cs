@@ -1,4 +1,6 @@
-﻿namespace Microsoft.GuidGenVsPackage
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace Microsoft.GuidGenVsPackage
 {
     using System;
     using System.Collections.Generic;
