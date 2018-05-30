@@ -44,7 +44,7 @@
          MicroBuild.VisualStudio package, because of WPF's temporary project that doesn't get
          the imports right. -->
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(UserProfile)\.nuget\packages\MicroBuild.VisualStudio\2.0.40\build\FinalPublicKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>$(UserProfile)\.nuget\packages\MicroBuild.VisualStudio\2.0.54\build\FinalPublicKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
@@ -117,7 +117,7 @@
     <Resource Include="AppIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MicroBuild.VisualStudio" Version="2.0.40" PrivateAssets="none" />
+    <PackageReference Include="MicroBuild.VisualStudio" Version="2.0.54" PrivateAssets="none" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="1.6.35" PrivateAssets="none" />
     <PackageReference Include="ReadOnlySourceTree" Version="0.1.37-beta" PrivateAssets="none" />
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="14.0.50702" />
