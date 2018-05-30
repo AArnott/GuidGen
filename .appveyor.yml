@@ -25,7 +25,7 @@ build:
   verbosity: minimal
 test_script:
 - cmd: >-
-    SET testdir=bin\GuidGenTests\%configuration%\
+    SET testdir=bin\GuidGenTests\%configuration%\net46\
 
     "%userprofile%\.nuget\packages\OpenCover\4.6.519\tools\OpenCover.Console.exe"
     -register:user
@@ -44,7 +44,5 @@ test_script:
 
     codecov -f "%testdir%code_coverage.xml"
 artifacts:
-- path: bin\GuidGenVsPackage\%configuration%\GuidGenVsPackage.vsix
+- path: bin\GuidGenVsPackage\%configuration%\net46\GuidGenVsPackage.vsix
   name: VS Package
-- path: bin\GuidGen\%configuration%\GuidGen.exe
-  name: WPF Application
