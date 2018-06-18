@@ -40,11 +40,11 @@ build/
 *.tmp
 *.tmp_proj
 *.log
+*.binlog
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 # Visual C++ cache files
@@ -113,7 +113,6 @@ AppPackages/
 sql/
 *.Cache
 ClientBin/
-[Ss]tyle[Cc]op.*
 ~$*
 *~
 *.dbmdl

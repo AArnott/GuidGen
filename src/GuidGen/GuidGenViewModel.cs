@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;
@@ -11,8 +13,15 @@
     using System.Windows.Input;
     using Microsoft;
 
+    /// <summary>
+    /// The view model for the <see cref="MainWindow"/>.
+    /// </summary>
     public class GuidGenViewModel : BindableBase
     {
+        private Guid value;
+
+        private CodeSnippetFormat format;
+
         public GuidGenViewModel()
         {
             this.NewGuidCommand = new SimpleCommand(() => this.NewGuid());
@@ -20,22 +29,20 @@
 
             this.Value = Guid.NewGuid();
             this.Format = CodeSnippetFormat.RegistryFormat;
-            this.RegisterDependentProperty(() => Value, () => CodeSnippet);
-            this.RegisterDependentProperty(() => Format, () => CodeSnippet);
+            this.RegisterDependentProperty(() => this.Value, () => this.CodeSnippet);
+            this.RegisterDependentProperty(() => this.Format, () => this.CodeSnippet);
         }
 
         public ICommand NewGuidCommand { get; private set; }
 
         public ICommand CopyCommand { get; private set; }
 
-        private Guid value;
         public Guid Value
         {
             get { return this.value; }
             set { this.SetProperty(ref this.value, value); }
         }
 
-        private CodeSnippetFormat format;
         public CodeSnippetFormat Format
         {
             get { return this.format; }

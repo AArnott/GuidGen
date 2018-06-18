@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;
@@ -19,13 +21,6 @@
 
         public abstract void Execute(object parameter);
 
-        protected virtual void OnCanExecuteChanged()
-        {
-            var changed = this.CanExecuteChanged;
-            if (changed != null)
-            {
-                changed(this, EventArgs.Empty);
-            }
-        }
+        protected virtual void OnCanExecuteChanged() => this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 }

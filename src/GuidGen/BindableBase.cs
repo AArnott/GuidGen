@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;
@@ -36,6 +38,29 @@
         }
 
         /// <summary>
+        /// Gets the name of the property referenced in an expression.
+        /// </summary>
+        /// <typeparam name="T">The type of value returned by the property.</typeparam>
+        /// <param name="propertyExpression">The property expression.</param>
+        /// <returns>The name of the property.</returns>
+        /// <exception cref="System.ArgumentException">Thrown if the expression is in an unrecognized format.</exception>
+        protected static string GetPropertyName<T>(Expression<T> propertyExpression)
+        {
+            if (!(propertyExpression.Body is MemberExpression memberExpression))
+            {
+                var unaryExpression = propertyExpression.Body as UnaryExpression;
+                memberExpression = unaryExpression.Operand as MemberExpression;
+            }
+
+            if (memberExpression == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return memberExpression.Member.Name;
+        }
+
+        /// <summary>
         /// Checks if a property already matches a desired value.  Sets the property and
         /// notifies listeners only when necessary.
         /// </summary>
@@ -47,7 +72,7 @@
         /// support CallerMemberName.</param>
         /// <returns>True if the value was changed, false if the existing value matched the
         /// desired value.</returns>
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (typeof(T).IsClass)
             {
@@ -82,16 +107,11 @@
                 return;
             }
 
-            var eventHandler = this.PropertyChanged;
-            if (eventHandler != null)
-            {
-                eventHandler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
             // The field could actually be null because the DataContractSerializer
             // skips the constructor when deserializing.
-            HashSet<string> dependentProperties;
-            if (this.dependentPropertiesMap != null && this.dependentPropertiesMap.TryGetValue(propertyName, out dependentProperties))
+            if (this.dependentPropertiesMap != null && this.dependentPropertiesMap.TryGetValue(propertyName, out HashSet<string> dependentProperties))
             {
                 foreach (var dependentProperty in dependentProperties)
                 {
@@ -125,8 +145,7 @@
                 this.dependentPropertiesMap = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             }
 
-            HashSet<string> dependentProperties;
-            if (!this.dependentPropertiesMap.TryGetValue(baseProperty, out dependentProperties))
+            if (!this.dependentPropertiesMap.TryGetValue(baseProperty, out HashSet<string> dependentProperties))
             {
                 this.dependentPropertiesMap[baseProperty] = dependentProperties = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             }
@@ -147,30 +166,5 @@
 
             this.RegisterDependentProperty(GetPropertyName(baseProperty), GetPropertyName(dependentProperty));
         }
-
-        /// <summary>
-        /// Gets the name of the property referenced in an expression.
-        /// </summary>
-        /// <typeparam name="T">The type of value returned by the property.</typeparam>
-        /// <param name="propertyExpression">The property expression.</param>
-        /// <returns>The name of the property.</returns>
-        /// <exception cref="System.ArgumentException">Thrown if the expression is in an unrecognized format.</exception>
-        protected static string GetPropertyName<T>(Expression<T> propertyExpression)
-        {
-            var memberExpression = propertyExpression.Body as MemberExpression;
-            if (memberExpression == null)
-            {
-                var unaryExpression = propertyExpression.Body as UnaryExpression;
-                memberExpression = unaryExpression.Operand as MemberExpression;
-            }
-
-            if (memberExpression == null)
-            {
-                throw new ArgumentException();
-            }
-
-            return memberExpression.Member.Name;
-        }
     }
 }
-

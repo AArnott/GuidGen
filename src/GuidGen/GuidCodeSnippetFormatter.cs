@@ -1,4 +1,6 @@
-﻿namespace GuidGen
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGen
 {
     using System;
     using System.Collections.Generic;
@@ -25,9 +27,9 @@
                 GetCodeSnippetFormatString(format),
                 value,
                 value.ToString("B").ToUpperInvariant(),
-                value.ToString("X").Replace("{", "").Replace("}", ""),
+                value.ToString("X").Replace("{", string.Empty).Replace("}", string.Empty),
                 value.ToString("D").ToUpperInvariant(),
-                value.ToString("X").Replace("{", "").Replace("}", "").Replace("0x", "&H"));
+                value.ToString("X").Replace("{", string.Empty).Replace("}", string.Empty).Replace("0x", "&H"));
         }
 
         /// <summary>
@@ -41,7 +43,7 @@
         /// {1} "{XXXXXXXX-XXX-...}"
         /// {2} "0xabdcdfse, 0xdfsaefq, ..." with no curly braces
         /// {3} "XXXXXXX-XXX-XXXX-..."
-        /// {4} &Habdcdfse, &Hdfsaefq, ..." with no curly braces
+        /// {4} &amp;Habdcdfse, &amp;Hdfsaefq, ..." with no curly braces
         /// </remarks>
         private static string GetCodeSnippetFormatString(CodeSnippetFormat format)
         {

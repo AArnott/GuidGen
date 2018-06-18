@@ -1,4 +1,6 @@
-﻿namespace GuidGenTests
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGenTests
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +13,7 @@
 
     public class GuidGenViewModelTests
     {
-        private GuidGenViewModel viewModel = new GuidGenViewModel();
+        private readonly GuidGenViewModel viewModel = new GuidGenViewModel();
 
         [Fact]
         public void InitialGuidIsNonEmpty()
@@ -44,7 +46,7 @@
             Assert.NotEqual(Guid.Empty, this.viewModel.Value);
         }
 
-        [STAFact]
+        [StaFact]
         public void CopyCommand_CopiesGuid()
         {
             Clipboard.Clear();

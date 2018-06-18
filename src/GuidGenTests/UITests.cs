@@ -1,4 +1,6 @@
-﻿namespace GuidGenTests
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+namespace GuidGenTests
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +16,7 @@
     [Trait("UI", "")]
     public class UITests : IDisposable
     {
-        private MainWindow window;
+        private readonly MainWindow window;
 
         public UITests()
         {
@@ -26,18 +28,18 @@
             this.window.Close();
         }
 
-        [STAFact]
+        [StaFact]
         public void UIRespondsToViewModelChanges()
         {
-            var listBox = (ListBox)window.FindName("FormatListBox");
-            var codeSnippetText = (TextBlock)window.FindName("CodeSnippetText");
+            var listBox = (ListBox)this.window.FindName("FormatListBox");
+            var codeSnippetText = (TextBlock)this.window.FindName("CodeSnippetText");
 
             foreach (CodeSnippetFormat format in Enum.GetValues(typeof(CodeSnippetFormat)))
             {
-                window.ViewModel.Format = format;
+                this.window.ViewModel.Format = format;
                 var listBoxSelectedFormat = (CodeSnippetFormat)listBox.SelectedValue;
                 Assert.Equal(format, listBoxSelectedFormat);
-                Assert.Equal(window.ViewModel.CodeSnippet, codeSnippetText.Text);
+                Assert.Equal(this.window.ViewModel.CodeSnippet, codeSnippetText.Text);
             }
         }
     }
