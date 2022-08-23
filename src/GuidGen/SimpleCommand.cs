@@ -1,27 +1,27 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace GuidGen
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft;
+
+namespace GuidGen;
+
+public class SimpleCommand : CommandBase
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft;
+    private readonly Action command;
 
-    public class SimpleCommand : CommandBase
+    public SimpleCommand(Action command)
     {
-        private readonly Action command;
+        Requires.NotNull(command, "command");
+        this.command = command;
+    }
 
-        public SimpleCommand(Action command)
-        {
-            Requires.NotNull(command, "command");
-            this.command = command;
-        }
-
-        public override void Execute(object parameter)
-        {
-            this.command();
-        }
+    public override void Execute(object parameter)
+    {
+        this.command();
     }
 }

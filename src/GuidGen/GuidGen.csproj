@@ -1,18 +1,11 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <ApplicationIcon>AppIcon.ico</ApplicationIcon>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <CodeAnalysisRuleSet>GuidGen.ruleset</CodeAnalysisRuleSet>
+    <UseWpf>true</UseWpf>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="15.3.53" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.0.64" />
   </ItemGroup>
 </Project>
