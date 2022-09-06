@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Language.Intellisense" Version="17.3.198" />
-    <PackageReference Include="Microsoft.VisualStudio.Sdk" Version="17.3.32804.24" />
+    <PackageReference Include="Microsoft.VisualStudio.Sdk" Version="17.0.32112.339" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.3.2094" />
   </ItemGroup>
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
