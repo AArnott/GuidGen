@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="Pack" DependsOnTargets="Build">
+    <Copy SourceFiles="$(TargetVsixContainer)"
+          DestinationFolder="$(VSIXOutputPath)"
+          UseHardlinksIfPossible="true"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

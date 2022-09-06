@@ -16,7 +16,7 @@ if (!$BuildConfiguration) {
     $BuildConfiguration = 'Debug'
 }
 
-$PackagesRoot = "$RepoRoot/bin/Packages/$BuildConfiguration/NuGet"
+$PackagesRoot = "$RepoRoot/bin/Packages/$BuildConfiguration"
 
 if (!(Test-Path $PackagesRoot)) {
     Write-Warning "Skipping because packages haven't been built yet."
