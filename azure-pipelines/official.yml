@@ -24,10 +24,6 @@ parameters:
   type: string
   default: Test
   values: [ 'Test', 'Real' ]
-- name: includeMacOS
-  displayName: Build on macOS
-  type: boolean
-  default: false # macOS is often bogged down in Azure Pipelines
 - name: RunTests
   displayName: Run tests
   type: boolean
@@ -61,7 +57,6 @@ stages:
       EnableCompliance: ${{ parameters.EnableCompliance }}
       EnableAPIScan: ${{ parameters.EnableAPIScan }}
       windowsPool: VSEngSS-MicroBuild2022-1ES
-      includeMacOS: ${{ parameters.includeMacOS }}
       RunTests: ${{ parameters.RunTests }}
 
 - stage: symbol_archive
