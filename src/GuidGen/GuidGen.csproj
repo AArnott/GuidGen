@@ -6,6 +6,6 @@
     <UseWpf>true</UseWpf>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.0.64" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.0.71" />
   </ItemGroup>
 </Project>
