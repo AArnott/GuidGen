@@ -7,3 +7,8 @@ updates:
   directory: /
   schedule:
     interval: weekly
+  ignore:
+    # We want to target Dev16, so don't upgrade to newer reference assemblies.
+  - dependency-name: Microsoft.VisualStudio.Sdk
+  - dependency-name: Microsoft.VisualStudio.Language.Intellisense
+  - dependency-name: Microsoft.VisualStudio.Validation
