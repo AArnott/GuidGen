@@ -1,13 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq.Expressions;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 using Microsoft;
 
 namespace GuidGen;
@@ -31,7 +26,7 @@ public abstract class BindableBase : INotifyPropertyChanged
     /// Gets a value indicating whether this instance is being disposed.
     /// </summary>
     /// <remarks>
-    /// Unless overridden by a derived class, this always returns <c>false</c>.
+    /// Unless overridden by a derived class, this always returns <see langword="false"/>.
     /// </remarks>
     protected virtual bool IsDisposing
     {

@@ -1,9 +1,14 @@
 # Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
 - package-ecosystem: nuget
   directory: /
   schedule:
-    interval: monthly
+    interval: weekly
+  ignore:
+    # We want to target Dev16, so don't upgrade to newer reference assemblies.
+  - dependency-name: Microsoft.VisualStudio.Sdk
+  - dependency-name: Microsoft.VisualStudio.Language.Intellisense
+  - dependency-name: Microsoft.VisualStudio.Validation
