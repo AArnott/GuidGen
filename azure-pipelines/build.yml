@@ -192,8 +192,6 @@ jobs:
         EnableOptProf: ${{ parameters.EnableOptProf }}
         IsOptProf: ${{ parameters.IsOptProf }}
 
-  - template: expand-template.yml
-
 - ${{ if not(parameters.IsOptProf) }}:
   - ${{ if parameters.EnableLinuxBuild }}:
     - job: Linux
@@ -226,7 +224,6 @@ jobs:
       - ${{ if parameters.EnableDotNetFormatCheck }}:
         - script: dotnet format --verify-no-changes --no-restore
           displayName: 💅 Verify formatted code
-      - template: expand-template.yml
 
   - ${{ if parameters.EnableMacOSBuild }}:
     - job: macOS
@@ -256,7 +253,6 @@ jobs:
         parameters:
           Is1ESPT: ${{ parameters.Is1ESPT }}
           RunTests: ${{ parameters.RunTests }}
-      - template: expand-template.yml
 
   - job: WrapUp
     dependsOn:
