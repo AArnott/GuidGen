@@ -8,29 +8,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuidGen.Properties;     
-
-[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+namespace GuidGen.Properties {
     
-    private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
     
-    public static Settings Default {
-        get {
-            return defaultInstance;
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
         }
-    }
-    
-    [global::System.Configuration.UserScopedSettingAttribute()]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    [global::System.Configuration.DefaultSettingValueAttribute("3")]
-    public int PreferredFormat {
-        get {
-            return ((int)(this["PreferredFormat"]));
-        }
-        set {
-            this["PreferredFormat"] = value;
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int PreferredFormat {
+            get {
+                return ((int)(this["PreferredFormat"]));
+            }
+            set {
+                this["PreferredFormat"] = value;
+            }
         }
     }
 }

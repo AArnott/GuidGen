@@ -31,7 +31,7 @@ public abstract class BindableBase : INotifyPropertyChanged
     /// Gets a value indicating whether this instance is being disposed.
     /// </summary>
     /// <remarks>
-    /// Unless overridden by a derived class, this always returns <c>false</c>.
+    /// Unless overridden by a derived class, this always returns <see langword="false"/>.
     /// </remarks>
     protected virtual bool IsDisposing
     {
