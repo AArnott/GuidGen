@@ -1,0 +1,63 @@
+parameters:
+- name: ArchiveSymbols
+  type: boolean
+  default: true
+- name: RealSign
+  displayName: Real sign?
+  type: boolean
+
+stages:
+- stage: release
+  displayName: Publish
+  condition: and(succeeded(), eq('${{ parameters.RealSign }}', 'true'))
+  jobs:
+  - ${{ if parameters.ArchiveSymbols }}:
+    - job: symbol_archive
+      displayName: Archive symbols
+      pool: VSEngSS-MicroBuild2022-1ES
+      steps:
+      - checkout: none
+      - download: current
+        artifact: Variables-Windows
+        displayName: 🔻 Download Variables-Windows artifact
+      - powershell: $(Pipeline.Workspace)/Variables-Windows/_pipelines.ps1
+        displayName: ⚙️ Set pipeline variables based on artifacts
+      - download: current
+        artifact: symbols-legacy
+        displayName: 🔻 Download symbols-legacy artifact
+      - task: MicroBuildArchiveSymbols@5
+        displayName: 🔣 Archive symbols to Symweb
+        inputs:
+          SymbolsFeatureName: $(SymbolsFeatureName)
+          SymbolsProject: VS
+          SymbolsAgentPath: $(Pipeline.Workspace)/symbols-legacy
+
+  - ${{ if false }}: # Switch to true to enable, but leave the condition to avoid merge conflicts later.
+    - job: push
+      displayName: azure-public/vs-impl feed
+      ${{ if parameters.ArchiveSymbols }}:
+        dependsOn: symbol_archive
+      pool:
+        name: AzurePipelines-EO
+        demands:
+        - ImageOverride -equals 1ESPT-Ubuntu22.04
+        os: Linux
+      templateContext:
+        outputs:
+        - output: nuget
+          displayName: 📦 Push nuget packages
+          packagesToPush: '$(Pipeline.Workspace)/deployables-Windows/NuGet/*.nupkg'
+          packageParentPath: $(Pipeline.Workspace)/deployables-Windows/NuGet
+          allowPackageConflicts: true
+          nuGetFeedType: external
+          publishFeedCredentials: azure-public/vs-impl
+      steps:
+      - checkout: none
+      - download: current
+        artifact: Variables-Windows
+        displayName: 🔻 Download Variables-Windows artifact
+      - powershell: $(Pipeline.Workspace)/Variables-Windows/_pipelines.ps1
+        displayName: ⚙️ Set pipeline variables based on artifacts
+      - download: current
+        artifact: deployables-Windows
+        displayName: 🔻 Download deployables-Windows artifact
